@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+*.vs*
+homework/1/out/
+homework/1/other_out/
