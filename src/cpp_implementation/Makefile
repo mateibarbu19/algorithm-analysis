@@ -1,4 +1,4 @@
-SRC = main.cpp
+SRC = main.cpp task.cpp task1.cpp task2.cpp task3.cpp bonus.cpp
 HEADERS = $(wildcard *.h)
 
 CC = g++

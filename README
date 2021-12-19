@@ -1,0 +1,25 @@
+# Tema-2-AA
+
+## Reduceri polinomiale
+
+Proiectul conține următoarele clase:
+
+* Task1
+  * Face reducerea problemei k-Colorare la SAT
+  * Se folosesc de n*k variabile X{i,j} = nodul i are culoarea j? care alcatuiesc formula F
+  * Stim ca fiecare nod are cel putin o culoare => \/ dupa j din X{i,j}
+  * Dar fiecare nod nu poate avea doua culori => Pt j,t !X{i,j} /\ ! X{i,t}
+  * Nodurile de la capetele muchiilor nu pot avea aceasi culoare => (u, v) in E !X{u,j} /\ ! X{v,j} pentru orice culoare j
+  * Astfel, daca k-Color(G, k) = 1 <=> SAT(F) = 1
+  * Complexitatea reducerii este Teta(N * K^2 + K * M), deci O(N^3), deoarece K poate fi de ordinul lui N, iar M este de ordinul lui M^2.
+* Task2
+  * Am redus problema k-Clicii la SAT folosing pergamentul din enunt, intocmai.
+  * Complexitatea reducerii este Teta(N^2*K^2), in cazul cel mai defavorabil O(N^4), deoarece K poate fi de ordinul lui N.
+* Task3
+  * Am realizat reducerea problemei k-Acoperire la k-Clica folosind lema 3.4 din Introducere in Algoritmi, C. Giumale, pagina 118. Acesta spune ca un graf are o k-acoperire daca si numai daca graful complementar are o (n-k)-clica.
+  * Complexitatea reducerii este Teta(N^2 + log(N) * (M_compl^2 + C_Task2)), unde C_Task2 este complexitatea unui apel de solve pentru taskul 2, deci cel mai defavorabil O(log(N)*(N^2+C_Task2)) deoarece numarul de muchii din graful complementar este de ordinul lui N^2.
+* Bonus
+  * Am folosit n variabile de forma X{i} = familia i trebuie arestata? (nodul i va face parte din acoperire?)
+  * Astfel folosim m clauze dure care spun ca cel putin o familie care apartine unei muchii trebuie arestata => X{i}\/X{j} cu (i,j) in E
+  * Apoi am atribuit un cost de 1 pentru fiecare familie care nu trebuie arestata, ca sa maximizez numarul de familii lasate in libertate
+  * Complexitatea reducerii este Teta(N+M), in cazul cel mai defavorabil O(N^2).
